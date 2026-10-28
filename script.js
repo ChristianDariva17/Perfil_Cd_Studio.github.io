@@ -326,11 +326,11 @@ const API_ENDPOINTS = {
   "/api/v1/health": {
     status: 200,
     data: {
-      status: "healthy",
-      node: "pucallpa-edge-01",
-      uptime: "99.98%",
-      latency_ms: 12,
-      redis_cluster: "tls-synchronized",
+      status: "healthy (demo)",
+      entorno: "simulacion-interactiva",
+      uptime_ejemplo: "99.98%",
+      latencia_simulada_ms: 12,
+      redis_cluster: "tls-synchronized (mock)",
       author: "Christian Dariva",
     },
   },
@@ -338,7 +338,7 @@ const API_ENDPOINTS = {
     status: 200,
     data: {
       hotel: "Castillo Yarinacocha",
-      location: "Yarinacocha, Pucallpa, PE",
+      datos: "ejemplo-ilustrativo",
       total_rooms: 48,
       occupied: 36,
       available: 12,
@@ -397,12 +397,12 @@ function initApiSandbox() {
     runBtn.style.transform = "scale(0.96)";
     setTimeout(() => (runBtn.style.transform = ""), 150);
 
-    if (badgeStatus) badgeStatus.textContent = `STATUS: ${res.status} OK`;
-    if (badgeTime) badgeTime.textContent = `LATENCIA: ${randomLatency}ms · CACHED`;
+    if (badgeStatus) badgeStatus.textContent = `STATUS: ${res.status} OK (MOCK)`;
+    if (badgeTime) badgeTime.textContent = `LATENCIA SIMULADA: ${randomLatency}ms · EJEMPLO`;
 
     const cloneData = { ...res.data };
-    if ("latency_ms" in cloneData) {
-      cloneData.latency_ms = randomLatency;
+    if ("latencia_simulada_ms" in cloneData) {
+      cloneData.latencia_simulada_ms = randomLatency;
     }
 
     renderJson(cloneData);
@@ -474,20 +474,36 @@ initFloatingDock();
 /* ==========================================================================
    9. Command Palette Modal (Cmd + K / Ctrl + K)
    ========================================================================== */
-const PALETTE_COMMANDS = [
-  { id: "nav-inicio", label: "Ir a Inicio", meta: "Navegación", badge: "NAV", action: () => (window.location.hash = "#inicio") },
-  { id: "nav-proyectos", label: "Ir a Proyectos", meta: "Navegación", badge: "NAV", action: () => (window.location.hash = "#proyectos") },
-  { id: "nav-servicios", label: "Ir a Qué desarrollo", meta: "Navegación", badge: "NAV", action: () => (window.location.hash = "#servicios") },
-  { id: "nav-como", label: "Ir a Cómo trabajo", meta: "Navegación", badge: "NAV", action: () => (window.location.hash = "#como-trabajo") },
-  { id: "nav-sobre", label: "Ir a Sobre mí", meta: "Navegación", badge: "NAV", action: () => (window.location.hash = "#sobre-mi") },
-  { id: "nav-contacto", label: "Ir a Contacto", meta: "Navegación", badge: "NAV", action: () => (window.location.hash = "#contacto") },
+function navigateToSection(hash) {
+  if (window.location.pathname.includes("/proyectos/")) {
+    window.location.href = `../index.html${hash}`;
+  } else {
+    window.location.hash = hash;
+  }
+}
 
-  { id: "proj-castillo", label: "Ver Caso: Castillo Yarinacocha (PMS)", meta: "Proyecto", badge: "PROJ", action: () => (window.location.href = "proyectos/castillo-yarinacocha.html") },
-  { id: "proj-flores", label: "Abrir Demo: Flores Amarillas (3D WebGL)", meta: "Proyecto", badge: "PROJ", action: () => window.open("https://flores-amarillas-omega-virid.vercel.app/", "_blank", "noreferrer") },
-  { id: "proj-canales", label: "Ver Caso: Canales Abiertos (Streaming HLS)", meta: "Proyecto", badge: "PROJ", action: () => (window.location.href = "proyectos/canales-abiertos.html") },
-  { id: "proj-pulso", label: "Ver Caso: Landing Pulso (UX)", meta: "Proyecto", badge: "PROJ", action: () => (window.location.href = "proyectos/pulso.html") },
-  { id: "proj-decide", label: "Ver Caso: Ucayali Decide 2026", meta: "Proyecto", badge: "PROJ", action: () => (window.location.href = "proyectos/ucayali-decide.html") },
-  { id: "proj-desayunos", label: "Ver Caso: SistemaDesayunos (Laravel)", meta: "Proyecto", badge: "PROJ", action: () => (window.location.href = "proyectos/sistema-desayunos.html") },
+function navigateToProject(filename) {
+  if (window.location.pathname.includes("/proyectos/")) {
+    window.location.href = filename;
+  } else {
+    window.location.href = `proyectos/${filename}`;
+  }
+}
+
+const PALETTE_COMMANDS = [
+  { id: "nav-inicio", label: "Ir a Inicio", meta: "Navegación", badge: "NAV", action: () => navigateToSection("#inicio") },
+  { id: "nav-proyectos", label: "Ir a Proyectos", meta: "Navegación", badge: "NAV", action: () => navigateToSection("#proyectos") },
+  { id: "nav-servicios", label: "Ir a Servicios", meta: "Navegación", badge: "NAV", action: () => navigateToSection("#servicios") },
+  { id: "nav-como", label: "Ir a Proceso", meta: "Navegación", badge: "NAV", action: () => navigateToSection("#como-trabajo") },
+  { id: "nav-sobre", label: "Ir a Sobre mí", meta: "Navegación", badge: "NAV", action: () => navigateToSection("#sobre-mi") },
+  { id: "nav-contacto", label: "Ir a Contacto", meta: "Navegación", badge: "NAV", action: () => navigateToSection("#contacto") },
+
+  { id: "proj-castillo", label: "Ver Caso: Castillo Yarinacocha (PMS)", meta: "Proyecto", badge: "PROJ", action: () => navigateToProject("castillo-yarinacocha.html") },
+  { id: "proj-flores", label: "Abrir Demo: Flores Amarillas (3D WebGL)", meta: "Proyecto", badge: "PROJ", action: () => window.open("https://flores-amarillas-omega-virid.vercel.app/", "_blank", "noopener noreferrer") },
+  { id: "proj-canales", label: "Ver Caso: Canales Abiertos (Streaming HLS)", meta: "Proyecto", badge: "PROJ", action: () => navigateToProject("canales-abiertos.html") },
+  { id: "proj-pulso", label: "Ver Caso: Landing Pulso (UX)", meta: "Proyecto", badge: "PROJ", action: () => navigateToProject("pulso.html") },
+  { id: "proj-decide", label: "Ver Caso: Ucayali Decide 2026", meta: "Proyecto", badge: "PROJ", action: () => navigateToProject("ucayali-decide.html") },
+  { id: "proj-desayunos", label: "Ver Caso: SistemaDesayunos (Laravel)", meta: "Proyecto", badge: "PROJ", action: () => navigateToProject("sistema-desayunos.html") },
 
   { id: "theme-precision", label: "Tema: Precision (Azul Predeterminado)", meta: "Apariencia", badge: "TEMA", action: () => applyTheme("precision") },
   { id: "theme-emerald", label: "Tema: Emerald (Matrix Verde)", meta: "Apariencia", badge: "TEMA", action: () => applyTheme("emerald") },
@@ -498,10 +514,10 @@ const PALETTE_COMMANDS = [
   { id: "tool-audio", label: "Alternar Audio Háptico ON/OFF", meta: "Herramienta", badge: "AUDIO", action: () => toggleAudio() },
   { id: "tool-matrix", label: "Lanzar Lluvia Digital Matrix", meta: "Easter Egg", badge: "SYS", action: () => startMatrixRain() },
 
-  { id: "contact-whatsapp", label: "Contactar por WhatsApp (+51 947 648 334)", meta: "Contacto", badge: "CHAT", action: () => window.open("https://wa.me/51947648334", "_blank", "noreferrer") },
+  { id: "contact-whatsapp", label: "Contactar por WhatsApp (+51 947 648 334)", meta: "Contacto", badge: "CHAT", action: () => window.open("https://wa.me/51947648334", "_blank", "noopener noreferrer") },
   { id: "contact-email", label: "Enviar Correo (cristiandariva8@gmail.com)", meta: "Contacto", badge: "MAIL", action: () => (window.location.href = "mailto:cristiandariva8@gmail.com") },
-  { id: "contact-github", label: "Ver Perfil en GitHub", meta: "Social", badge: "LINK", action: () => window.open("https://github.com/ChristianDariva17", "_blank", "noreferrer") },
-  { id: "contact-linkedin", label: "Ver Perfil en LinkedIn", meta: "Social", badge: "LINK", action: () => window.open("https://www.linkedin.com/in/christiandarivasoria/", "_blank", "noreferrer") },
+  { id: "contact-github", label: "Ver Perfil en GitHub", meta: "Social", badge: "LINK", action: () => window.open("https://github.com/ChristianDariva17", "_blank", "noopener noreferrer") },
+  { id: "contact-linkedin", label: "Ver Perfil en LinkedIn", meta: "Social", badge: "LINK", action: () => window.open("https://www.linkedin.com/in/christiandarivasoria/", "_blank", "noopener noreferrer") },
 ];
 
 let selectedPaletteIndex = 0;
@@ -805,10 +821,10 @@ function executeCliCommand(rawCmd) {
     case "contact":
     case "contacto":
       printCliLine("Canales de Contacto Directo:", "cli-line", "#38bdf8");
-      printCliLine("  • WhatsApp: <a href='https://wa.me/51947648334' target='_blank' style='color:#4ade80;'>+51 947 648 334 ↗</a>", "cli-line");
+      printCliLine("  • WhatsApp: <a href='https://wa.me/51947648334' target='_blank' rel='noopener noreferrer' style='color:#4ade80;'>+51 947 648 334 ↗</a>", "cli-line");
       printCliLine("  • Email: <a href='mailto:cristiandariva8@gmail.com' style='color:#38bdf8;'>cristiandariva8@gmail.com ↗</a>", "cli-line");
-      printCliLine("  • LinkedIn: <a href='https://www.linkedin.com/in/christiandarivasoria/' target='_blank' style='color:#93c5fd;'>linkedin.com/in/christiandarivasoria/ ↗</a>", "cli-line");
-      printCliLine("  • GitHub: <a href='https://github.com/ChristianDariva17' target='_blank' style='color:#93c5fd;'>github.com/ChristianDariva17 ↗</a>", "cli-line");
+      printCliLine("  • LinkedIn: <a href='https://www.linkedin.com/in/christiandarivasoria/' target='_blank' rel='noopener noreferrer' style='color:#93c5fd;'>linkedin.com/in/christiandarivasoria/ ↗</a>", "cli-line");
+      printCliLine("  • GitHub: <a href='https://github.com/ChristianDariva17' target='_blank' rel='noopener noreferrer' style='color:#93c5fd;'>github.com/ChristianDariva17 ↗</a>", "cli-line");
       break;
 
     case "whoami":

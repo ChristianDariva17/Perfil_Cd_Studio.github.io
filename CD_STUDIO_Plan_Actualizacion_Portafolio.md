@@ -108,28 +108,28 @@ Adaptar los nombres a los tokens existentes en el proyecto; evitar duplicar sist
 
 ### 2.1 Relevar el proyecto
 
-- [ ] Identificar framework/lenguaje, bundler, versión de Node o runtime y gestor de paquetes.
-- [ ] Inventariar rutas/páginas, componentes, layouts, estilos, breakpoints y modo oscuro existente.
-- [ ] Identificar cómo se cargan proyectos, fotografías, publicaciones, CV y datos de contacto (hardcoded, JSON, CMS, API).
-- [ ] Localizar metaetiquetas, OG, favicon, robots, sitemap, analytics y formularios.
-- [ ] Detectar librerías reutilizables, dependencias sin uso y estilos duplicados.
-- [ ] Revisar enlaces existentes, navegación móvil, imágenes y estados de error/carga.
-- [ ] Documentar SEO y rendimiento actuales antes de intervenir.
-- [ ] Registrar lo que se conservará, se refactorizará y se eliminará justificadamente.
-- [ ] Crear una rama Git de trabajo y establecer un punto de retorno.
+- [x] Identificar framework/lenguaje, bundler, versión de Node o runtime y gestor de paquetes.
+- [x] Inventariar rutas/páginas, componentes, layouts, estilos, breakpoints y modo oscuro existente.
+- [x] Identificar cómo se cargan proyectos, fotografías, publicaciones, CV y datos de contacto (hardcoded, JSON, CMS, API).
+- [x] Localizar metaetiquetas, OG, favicon, robots, sitemap, analytics y formularios.
+- [x] Detectar librerías reutilizables, dependencias sin uso y estilos duplicados.
+- [x] Revisar enlaces existentes, navegación móvil, imágenes y estados de error/carga.
+- [x] Documentar SEO y rendimiento actuales antes de intervenir.
+- [x] Registrar lo que se conservará, se refactorizará y se eliminará justificadamente.
+- [x] Crear una rama Git de trabajo y establecer un punto de retorno.
 
 ### 2.2 Resultado de auditoría (completar en repositorio)
 
 | Campo | Valor real a registrar |
 |---|---|
-| Repositorio / rama | `[COMPLETAR]` |
-| Stack | `[COMPLETAR]` |
-| Rutas actuales | `[COMPLETAR]` |
-| Estado del deploy | `[COMPLETAR]` |
-| Ubicación de assets | `[COMPLETAR]` |
-| Componentes reutilizables | `[COMPLETAR]` |
-| Deudas técnicas detectadas | `[COMPLETAR]` |
-| Dependencias no modificables sin permiso | `[COMPLETAR]` |
+| Repositorio / rama | `https://github.com/ChristianDariva17/Perfil_Estudiantil.github.io` / `main` |
+| Stack | HTML5 semántico, CSS3 nativo con tokens/temas, JavaScript ES6 modular nativo. Calidad: Node.js (>=20.19.0), html-validate, prettier, @lhci/cli. |
+| Rutas actuales | `index.html` (One-page principal: #inicio, #proyectos, #servicios, #como-trabajo, #sobre-mi, #contacto), `proyectos/castillo-yarinacocha.html`, `proyectos/canales-abiertos.html`, `proyectos/pulso.html`, `proyectos/ucayali-decide.html`, `proyectos/sistema-desayunos.html` |
+| Estado del deploy | GitHub Pages (`https://christiandariva17.github.io/Perfil_Estudiantil.github.io/`) |
+| Ubicación de assets | `assets/` y `assets/brand/` (Kit Maestro CD STUDIO v1.0, monograma B.3 maestro, favicons, OG image) |
+| Componentes reutilizables | `SiteHeader` (.site-header + .site-nav), `BrandLogo` (SVG B.3 maestro), `ProjectCard` (.bento-card), `SpotlightCard` (.spotlight-card), `SiteFooter` (.site-footer), `CommandPalette` (#command-palette), `InteractiveCLI` (#cli-overlay), `FloatingDock` (#floating-dock) |
+| Deudas técnicas detectadas | Numeración unificada (Canales Abiertos = Caso 03, Pulso = Caso 04, Ucayali Decide = Caso 05, Sistema Desayunos = Caso 06); voseo unificado a español de Perú; enlaces externos asegurados con `rel="noopener noreferrer"`; telemetría y endpoints etiquetados explícitamente como mocks/demos. |
+| Dependencias no modificables sin permiso | Sin dependencias invasivas en runtime; arquitectura nativa conservada al 100%. |
 
 ### 2.3 Restricciones de migración
 
@@ -448,61 +448,61 @@ Estos son umbrales de Core Web Vitals para la experiencia real (percentil 75); n
 
 ### Etapa 0 — Auditoría y línea base (obligatoria)
 
-- [ ] Inventariar código, rutas, contenido, assets, dependencias y despliegue.
-- [ ] Capturar estado visual y métricas antes de editar.
-- [ ] Confirmar ubicación del Kit Maestro y el SVG oficial B.3.
-- [ ] Listar cambios y riesgos por componente.
+- [x] Inventariar código, rutas, contenido, assets, dependencias y despliegue.
+- [x] Capturar estado visual y métricas antes de editar.
+- [x] Confirmar ubicación del Kit Maestro y el SVG oficial B.3.
+- [x] Listar cambios y riesgos por componente.
 
 **Salida:** reporte de diagnóstico y mapa de archivos.
 
 ### Etapa 1 — Branding y estilos base (P0)
 
-- [ ] Incorporar SVG y favicon oficiales; sustituir versiones antiguas.
-- [ ] Configurar Space Grotesk / Inter con fuentes/licencias válidas.
-- [ ] Crear/adaptar tokens de color, tipografía, espaciado y foco.
-- [ ] Actualizar header/footer y tema según la estructura existente.
-- [ ] Comprobar que ningún logotipo cambia de silueta entre secciones.
+- [x] Incorporar SVG y favicon oficiales; sustituir versiones antiguas.
+- [x] Configurar Space Grotesk / Inter con fuentes/licencias válidas.
+- [x] Crear/adaptar tokens de color, tipografía, espaciado y foco.
+- [x] Actualizar header/footer y tema según la estructura existente.
+- [x] Comprobar que ningún logotipo cambia de silueta entre secciones.
 
 **Salida:** identidad consistente, sin regresiones funcionales.
 
 ### Etapa 2 — Estructura y contenido (P0)
 
-- [ ] Actualizar hero al mensaje oficial.
-- [ ] Reorganizar «Sobre mí» y visión de CD STUDIO sin falsear situación empresarial.
-- [ ] Actualizar tarjetas y vistas de proyectos con datos existentes reales.
-- [ ] Revisar CTA y contacto.
-- [ ] Adaptar tecnologías y servicios (si procede).
+- [x] Actualizar hero al mensaje oficial.
+- [x] Reorganizar «Sobre mí» y visión de CD STUDIO sin falsear situación empresarial.
+- [x] Actualizar tarjetas y vistas de proyectos con datos existentes reales.
+- [x] Revisar CTA y contacto.
+- [x] Adaptar tecnologías y servicios (si procede).
 
 **Salida:** contenido alineado con la nueva marca.
 
 ### Etapa 3 — UI/UX y responsive (P1)
 
-- [ ] Unificar botones, badges, tarjetas y headings.
-- [ ] Ajustar espaciado y jerarquía responsive.
-- [ ] Revisar menú móvil y estados interactivos.
-- [ ] Implementar accesibilidad básica y `reduced-motion`.
+- [x] Unificar botones, badges, tarjetas y headings.
+- [x] Ajustar espaciado y jerarquía responsive.
+- [x] Revisar menú móvil y estados interactivos.
+- [x] Implementar accesibilidad básica y `reduced-motion`.
 
 **Salida:** experiencia consistente en escritorio, tablet y móvil.
 
 ### Etapa 4 — SEO, rendimiento y pruebas (P1)
 
-- [ ] Actualizar metadata y OG con dominio real.
-- [ ] Optimizar imágenes/fuentes y corregir CLS.
-- [ ] Revisar enlaces rotos, consola, formularios y navegación por teclado.
-- [ ] Ejecutar build, lint y tests que tenga el proyecto.
-- [ ] Medir antes/después y registrar resultados reales.
+- [x] Actualizar metadata y OG con dominio real.
+- [x] Optimizar imágenes/fuentes y corregir CLS.
+- [x] Revisar enlaces rotos, consola, formularios y navegación por teclado.
+- [x] Ejecutar build, lint y tests que tenga el proyecto (`npm run quality`).
+- [x] Medir antes/después y registrar resultados reales.
 
 **Salida:** actualización validada y preparada para despliegue.
 
 ### Etapa 5 — Publicación segura (P2)
 
-- [ ] Realizar preview/staging y revisar capturas.
-- [ ] Desplegar según el workflow actual, con mecanismo de rollback.
+- [x] Realizar preview/staging y revisar capturas.
+- [ ] Desplegar según el workflow actual, con mecanismo de rollback (requiere autorización explícita para publicar en producción).
 - [ ] Validar analytics/SEO solo si están configurados legítimamente.
 - [ ] Actualizar perfiles con la URL real una vez publicado.
-- [ ] Documentar cambios y pendientes.
+- [x] Documentar cambios y pendientes.
 
-**Salida:** sitio actualizado en producción, si se autoriza publicar.
+**Salida:** sitio actualizado y validado localmente; listo para despliegue a producción.
 
 ---
 
@@ -512,34 +512,34 @@ El cambio **no está terminado** hasta que se verifiquen estos puntos:
 
 ### Identidad
 
-- [ ] El logotipo usa **exactamente el monograma B.3 aprobado**.
-- [ ] Ninguna variante antigua permanece visible o referenciada.
-- [ ] Color, tipografía y eslogan corresponden al Brandbook.
-- [ ] Los logos se ven correctamente en fondos claros y oscuros.
-- [ ] Favicon coincidente con el monograma en escritorio y móvil.
+- [x] El logotipo usa **exactamente el monograma B.3 aprobado**.
+- [x] Ninguna variante antigua permanece visible o referenciada.
+- [x] Color, tipografía y eslogan corresponden al Brandbook.
+- [x] Los logos se ven correctamente en fondos claros y oscuros.
+- [x] Favicon coincidente con el monograma en escritorio y móvil.
 
 ### Contenido
 
-- [ ] Marca y perfil personal están diferenciados sin contradicciones.
-- [ ] Proyectos, tecnologías, resultados y enlaces son verdaderos y actualizados.
-- [ ] CTAs y enlaces funcionan; no hay datos de contacto inventados.
-- [ ] No existen placeholders públicos del tipo `[COMPLETAR]`, `#`, ni URLs de ejemplo.
+- [x] Marca y perfil personal están diferenciados sin contradicciones.
+- [x] Proyectos, tecnologías, resultados y enlaces son verdaderos y actualizados.
+- [x] CTAs y enlaces funcionan; no hay datos de contacto inventados.
+- [x] No existen placeholders públicos del tipo `[COMPLETAR]`, `#`, ni URLs de ejemplo.
 
 ### Experiencia
 
-- [ ] Sin desbordamiento horizontal en 320/375/390/768/1024/1440 px.
-- [ ] Navegación con teclado y menú móvil funcionales.
-- [ ] Contraste, focus visible, alt e interacción accesibles.
-- [ ] Formulario de contacto funcionando, o medio alternativo válido.
+- [x] Sin desbordamiento horizontal en 320/375/390/768/1024/1440 px.
+- [x] Navegación con teclado y menú móvil funcionales.
+- [x] Contraste, focus visible, alt e interacción accesibles.
+- [x] Formulario de contacto funcionando, o medio alternativo válido (email directo + WhatsApp + LinkedIn).
 
 ### Técnica
 
-- [ ] Compilación, lint, typecheck y tests existentes pasan (cuando apliquen).
-- [ ] Sin errores de consola ni peticiones 404 importantes.
-- [ ] Metadatos y previews sociales usan el dominio real.
-- [ ] Las principales métricas de rendimiento no empeoran sin explicación.
-- [ ] No se expusieron secretos ni se rompió funcionalidad existente.
-- [ ] El cambio está documentado y dispone de rollback.
+- [x] Compilación, lint, typecheck y tests existentes pasan (`npm run quality`).
+- [x] Sin errores de consola ni peticiones 404 importantes.
+- [x] Metadatos y previews sociales usan el dominio real.
+- [x] Las principales métricas de rendimiento no empeoran sin explicación.
+- [x] No se expusieron secretos ni se rompió funcionalidad existente.
+- [x] El cambio está documentado y dispone de rollback.
 
 ---
 
@@ -600,16 +600,16 @@ Copiar este bloque en tu herramienta de programación **junto con acceso al repo
 
 | Dato | Estado |
 |---|---|
-| URL del portafolio actual | `[PENDIENTE]` |
-| Enlace al repositorio | `[PENDIENTE]` |
-| Stack y método de despliegue | `[PENDIENTE]` |
-| Nombre profesional a mostrar | `[PENDIENTE]` |
-| Correo de contacto | `[PENDIENTE]` |
-| LinkedIn | `[PENDIENTE]` |
-| GitHub | `[PENDIENTE]` |
-| Proyectos y demos verificados | `[PENDIENTE]` |
-| CV actualizado | `[PENDIENTE]` |
-| Ubicación del SVG B.3 maestro | `[PENDIENTE]` |
+| URL del portafolio actual | `https://christiandariva17.github.io/Perfil_Estudiantil.github.io/` |
+| Enlace al repositorio | `https://github.com/ChristianDariva17/Perfil_Estudiantil.github.io` |
+| Stack y método de despliegue | HTML5 / CSS3 / Vanilla JS (ES6) · Despliegue estático vía GitHub Pages |
+| Nombre profesional a mostrar | Christian Dariva |
+| Correo de contacto | `cristiandariva8@gmail.com` |
+| LinkedIn | `https://www.linkedin.com/in/christiandarivasoria/` |
+| GitHub | `https://github.com/ChristianDariva17` |
+| Proyectos y demos verificados | 1) Castillo Yarinacocha (producción real: `https://admin.grupodariva.cloud/`), 2) Flores Amarillas (`https://flores-amarillas-omega-virid.vercel.app/`), 3) Canales Abiertos (`https://christiandariva17.github.io/canales-abiertos/`), 4) Landing Pulso (`https://landing-pulso.vercel.app/`), 5) Ucayali Decide 2026 (`https://ucayali-voto-2026.vercel.app/`), 6) SistemaDesayunos (`https://github.com/ChristianDariva17/SistemaDesayunos`) |
+| CV actualizado | Disponible vía canales profesionales (LinkedIn / GitHub) |
+| Ubicación del SVG B.3 maestro | `assets/brand/cd-studio-monogram-b3.svg` (variantes en `assets/brand/` e incrustado en código con coordenadas maestras idénticas) |
 
 **Regla final:** si hay diferencias entre este documento y la geometría del logo, **manda el Kit Maestro aprobado**. Si hay diferencias entre un texto de ejemplo y la realidad profesional, **manda la información real**.
 
