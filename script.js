@@ -28,7 +28,10 @@ siteNav?.querySelectorAll("a").forEach((link) => {
 });
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && menuButton?.getAttribute("aria-expanded") === "true") {
+  if (
+    event.key === "Escape" &&
+    menuButton?.getAttribute("aria-expanded") === "true"
+  ) {
     setMenu(false);
     menuButton.focus();
   }
@@ -38,7 +41,9 @@ const yearEl = document.querySelector("#year");
 if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
 /* --- Device & Accessibility Capabilities --- */
-const isReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const isReducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)",
+).matches;
 const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
 /* ==========================================================================
@@ -57,7 +62,12 @@ function initAudioContext() {
   }
 }
 
-function playHaptic(freq = 880, type = "sine", duration = 0.035, gainVal = 0.04) {
+function playHaptic(
+  freq = 880,
+  type = "sine",
+  duration = 0.035,
+  gainVal = 0.04,
+) {
   if (!isAudioEnabled) return;
   try {
     initAudioContext();
@@ -70,7 +80,10 @@ function playHaptic(freq = 880, type = "sine", duration = 0.035, gainVal = 0.04)
     osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
 
     gainNode.gain.setValueAtTime(gainVal, audioCtx.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+    gainNode.gain.exponentialRampToValueAtTime(
+      0.0001,
+      audioCtx.currentTime + duration,
+    );
 
     osc.connect(gainNode);
     gainNode.connect(audioCtx.destination);
@@ -94,7 +107,9 @@ function toggleAudio() {
   }
 }
 
-document.querySelector("#dock-audio-btn")?.addEventListener("click", toggleAudio);
+document
+  .querySelector("#dock-audio-btn")
+  ?.addEventListener("click", toggleAudio);
 
 /* ==========================================================================
    2. Theme Switcher Engine (Precision, Emerald, Solar, Monolith)
@@ -186,7 +201,8 @@ function initHeroHUD() {
   });
 
   heroArt.addEventListener("mouseleave", () => {
-    hudCore.style.transform = "perspective(800px) rotateX(0deg) rotateY(0deg) translateZ(0px)";
+    hudCore.style.transform =
+      "perspective(800px) rotateX(0deg) rotateY(0deg) translateZ(0px)";
   });
 }
 initHeroHUD();
@@ -195,13 +211,41 @@ initHeroHUD();
    5. Castillo Yarinacocha Live Telemetry Simulator
    ========================================================================== */
 const telemetryEvents = [
-  { tag: "AUTH", text: "Front Desk · Check-in Habitación #204 validado", color: "#38bdf8" },
-  { tag: "SYNC", text: "WebSockets · Transmisión activa en 4 terminales", color: "#93c5fd" },
-  { tag: "KDS", text: "Cocina Central · Comanda #118 despachada", color: "#4ade80" },
-  { tag: "GATE", text: "Acceso Piscinas · QR validado (Torniquete ZKTeco)", color: "#a78bfa" },
-  { tag: "CACHE", text: "Redis TLS · Estado de habitaciones sincronizado (8ms)", color: "#38bdf8" },
-  { tag: "POS", text: "Caja Principal · Arqueo y corte Z registrado", color: "#facc15" },
-  { tag: "SYS", text: "Cluster Node.js · Uptime 99.98% · Salud óptima", color: "#4ade80" },
+  {
+    tag: "AUTH",
+    text: "Front Desk · Check-in Habitación #204 validado",
+    color: "#38bdf8",
+  },
+  {
+    tag: "SYNC",
+    text: "WebSockets · Transmisión activa en 4 terminales",
+    color: "#93c5fd",
+  },
+  {
+    tag: "KDS",
+    text: "Cocina Central · Comanda #118 despachada",
+    color: "#4ade80",
+  },
+  {
+    tag: "GATE",
+    text: "Acceso Piscinas · QR validado (Torniquete ZKTeco)",
+    color: "#a78bfa",
+  },
+  {
+    tag: "CACHE",
+    text: "Redis TLS · Estado de habitaciones sincronizado (8ms)",
+    color: "#38bdf8",
+  },
+  {
+    tag: "POS",
+    text: "Caja Principal · Arqueo y corte Z registrado",
+    color: "#facc15",
+  },
+  {
+    tag: "SYS",
+    text: "Cluster Node.js · Uptime 99.98% · Salud óptima",
+    color: "#4ade80",
+  },
 ];
 
 let telemetryIndex = 0;
@@ -267,9 +311,18 @@ function initArchitectureTopology() {
   if (!simBtn) return;
 
   const nodes = [
-    { el: document.querySelector('.topo-node[data-node="front"]'), arrow: document.querySelector("#arrow-1") },
-    { el: document.querySelector('.topo-node[data-node="node"]'), arrow: document.querySelector("#arrow-2") },
-    { el: document.querySelector('.topo-node[data-node="redis"]'), arrow: document.querySelector("#arrow-3") },
+    {
+      el: document.querySelector('.topo-node[data-node="front"]'),
+      arrow: document.querySelector("#arrow-1"),
+    },
+    {
+      el: document.querySelector('.topo-node[data-node="node"]'),
+      arrow: document.querySelector("#arrow-2"),
+    },
+    {
+      el: document.querySelector('.topo-node[data-node="redis"]'),
+      arrow: document.querySelector("#arrow-3"),
+    },
     { el: document.querySelector('.topo-node[data-node="db"]'), arrow: null },
   ];
 
@@ -299,7 +352,11 @@ function initArchitectureTopology() {
         setTimeout(stepFlow, 340);
       } else {
         // Complete flow
-        injectTelemetryRow("FLOW", "Pipeline distribuido: Evento sincronizado en 14ms (4 nodos)", "#4ade80");
+        injectTelemetryRow(
+          "FLOW",
+          "Pipeline distribuido: Evento sincronizado en 14ms (4 nodos)",
+          "#4ade80",
+        );
         playHaptic(1200, "sine", 0.08);
 
         setTimeout(() => {
@@ -364,7 +421,11 @@ const API_ENDPOINTS = {
     status: 200,
     data: {
       backend: ["Node.js", "TypeScript", "PostgreSQL", "Redis TLS", "Docker"],
-      frontend: ["Vanilla Web Nativo", "WebGL / Three.js", "CSS3 Modern Variables"],
+      frontend: [
+        "Vanilla Web Nativo",
+        "WebGL / Three.js",
+        "CSS3 Modern Variables",
+      ],
       hardware: ["ZKteco Biometric / QR", "Impresoras Térmicas 80mm ESC/POS"],
     },
   },
@@ -397,8 +458,10 @@ function initApiSandbox() {
     runBtn.style.transform = "scale(0.96)";
     setTimeout(() => (runBtn.style.transform = ""), 150);
 
-    if (badgeStatus) badgeStatus.textContent = `STATUS: ${res.status} OK (MOCK)`;
-    if (badgeTime) badgeTime.textContent = `LATENCIA SIMULADA: ${randomLatency}ms · EJEMPLO`;
+    if (badgeStatus)
+      badgeStatus.textContent = `STATUS: ${res.status} OK (MOCK)`;
+    if (badgeTime)
+      badgeTime.textContent = `LATENCIA SIMULADA: ${randomLatency}ms · EJEMPLO`;
 
     const cloneData = { ...res.data };
     if ("latencia_simulada_ms" in cloneData) {
@@ -491,43 +554,229 @@ function navigateToProject(filename) {
 }
 
 const PALETTE_COMMANDS = [
-  { id: "nav-inicio", label: "Ir a Inicio", meta: "Navegación", badge: "NAV", action: () => navigateToSection("#inicio") },
-  { id: "nav-proyectos", label: "Ir a Proyectos", meta: "Navegación", badge: "NAV", action: () => navigateToSection("#proyectos") },
-  { id: "nav-servicios", label: "Ir a Servicios", meta: "Navegación", badge: "NAV", action: () => navigateToSection("#servicios") },
-  { id: "nav-como", label: "Ir a Proceso", meta: "Navegación", badge: "NAV", action: () => navigateToSection("#como-trabajo") },
-  { id: "nav-sobre", label: "Ir a Sobre mí", meta: "Navegación", badge: "NAV", action: () => navigateToSection("#sobre-mi") },
-  { id: "nav-contacto", label: "Ir a Contacto", meta: "Navegación", badge: "NAV", action: () => navigateToSection("#contacto") },
+  {
+    id: "nav-inicio",
+    label: "Ir a Inicio",
+    meta: "Navegación",
+    badge: "NAV",
+    action: () => navigateToSection("#inicio"),
+  },
+  {
+    id: "nav-proyectos",
+    label: "Ir a Proyectos",
+    meta: "Navegación",
+    badge: "NAV",
+    action: () => navigateToSection("#proyectos"),
+  },
+  {
+    id: "nav-servicios",
+    label: "Ir a Servicios",
+    meta: "Navegación",
+    badge: "NAV",
+    action: () => navigateToSection("#servicios"),
+  },
+  {
+    id: "nav-como",
+    label: "Ir a Proceso",
+    meta: "Navegación",
+    badge: "NAV",
+    action: () => navigateToSection("#como-trabajo"),
+  },
+  {
+    id: "nav-sobre",
+    label: "Ir a Sobre mí",
+    meta: "Navegación",
+    badge: "NAV",
+    action: () => navigateToSection("#sobre-mi"),
+  },
+  {
+    id: "nav-contacto",
+    label: "Ir a Contacto",
+    meta: "Navegación",
+    badge: "NAV",
+    action: () => navigateToSection("#contacto"),
+  },
 
-  { id: "proj-castillo", label: "Ver Caso: Castillo Yarinacocha (PMS)", meta: "Proyecto", badge: "PROJ", action: () => navigateToProject("castillo-yarinacocha.html") },
-  { id: "proj-flores", label: "Abrir Demo: Flores Amarillas (3D WebGL)", meta: "Proyecto", badge: "PROJ", action: () => window.open("https://flores-amarillas-omega-virid.vercel.app/", "_blank", "noopener noreferrer") },
-  { id: "proj-canales", label: "Ver Caso: Canales Abiertos (Streaming HLS)", meta: "Proyecto", badge: "PROJ", action: () => navigateToProject("canales-abiertos.html") },
-  { id: "proj-pulso", label: "Ver Caso: Landing Pulso (UX)", meta: "Proyecto", badge: "PROJ", action: () => navigateToProject("pulso.html") },
-  { id: "proj-decide", label: "Ver Caso: Ucayali Decide 2026", meta: "Proyecto", badge: "PROJ", action: () => navigateToProject("ucayali-decide.html") },
-  { id: "proj-desayunos", label: "Ver Caso: SistemaDesayunos (Laravel)", meta: "Proyecto", badge: "PROJ", action: () => navigateToProject("sistema-desayunos.html") },
+  {
+    id: "proj-castillo",
+    label: "Ver Caso 01: Castillo Yarinacocha (PMS)",
+    meta: "Sistemas",
+    badge: "CASO 01",
+    action: () => navigateToProject("castillo-yarinacocha.html"),
+  },
+  {
+    id: "proj-canales",
+    label: "Ver Caso 02: Canales Abiertos (Streaming HLS)",
+    meta: "Sistemas",
+    badge: "CASO 02",
+    action: () => navigateToProject("canales-abiertos.html"),
+  },
+  {
+    id: "proj-pulso",
+    label: "Ver Caso 03: Landing Pulso (UX)",
+    meta: "Sistemas",
+    badge: "CASO 03",
+    action: () => navigateToProject("pulso.html"),
+  },
+  {
+    id: "proj-decide",
+    label: "Ver Caso 04: Ucayali Decide 2026",
+    meta: "Sistemas",
+    badge: "CASO 04",
+    action: () => navigateToProject("ucayali-decide.html"),
+  },
+  {
+    id: "proj-desayunos",
+    label: "Ver Caso 05: SistemaDesayunos (Laravel)",
+    meta: "Sistemas",
+    badge: "CASO 05",
+    action: () => navigateToProject("sistema-desayunos.html"),
+  },
+  {
+    id: "proj-flores",
+    label: "Laboratorio: Flores Amarillas (3D WebGL)",
+    meta: "Laboratorio 3D",
+    badge: "LAB 01",
+    action: () =>
+      window.open(
+        "https://flores-amarillas-omega-virid.vercel.app/",
+        "_blank",
+        "noopener noreferrer",
+      ),
+  },
 
-  { id: "theme-precision", label: "Tema: Precision (Azul Predeterminado)", meta: "Apariencia", badge: "TEMA", action: () => applyTheme("precision") },
-  { id: "theme-emerald", label: "Tema: Emerald (Matrix Verde)", meta: "Apariencia", badge: "TEMA", action: () => applyTheme("emerald") },
-  { id: "theme-solar", label: "Tema: Solar (Ámbar Cálido)", meta: "Apariencia", badge: "TEMA", action: () => applyTheme("solar") },
-  { id: "theme-monolith", label: "Tema: Monolith (Grafito Minimalista)", meta: "Apariencia", badge: "TEMA", action: () => applyTheme("monolith") },
+  {
+    id: "theme-precision",
+    label: "Tema: Precision (Azul Predeterminado)",
+    meta: "Apariencia",
+    badge: "TEMA",
+    action: () => applyTheme("precision"),
+  },
+  {
+    id: "theme-emerald",
+    label: "Tema: Emerald (Matrix Verde)",
+    meta: "Apariencia",
+    badge: "TEMA",
+    action: () => applyTheme("emerald"),
+  },
+  {
+    id: "theme-solar",
+    label: "Tema: Solar (Ámbar Cálido)",
+    meta: "Apariencia",
+    badge: "TEMA",
+    action: () => applyTheme("solar"),
+  },
+  {
+    id: "theme-monolith",
+    label: "Tema: Monolith (Grafito Minimalista)",
+    meta: "Apariencia",
+    badge: "TEMA",
+    action: () => applyTheme("monolith"),
+  },
 
-  { id: "tool-cli", label: "Abrir Terminal CLI Interactivo", meta: "Herramienta", badge: "CLI", action: () => openCliOverlay() },
-  { id: "tool-audio", label: "Alternar Audio Háptico ON/OFF", meta: "Herramienta", badge: "AUDIO", action: () => toggleAudio() },
-  { id: "tool-matrix", label: "Lanzar Lluvia Digital Matrix", meta: "Easter Egg", badge: "SYS", action: () => startMatrixRain() },
+  {
+    id: "tool-cli",
+    label: "Abrir Terminal CLI Interactivo",
+    meta: "Herramienta",
+    badge: "CLI",
+    action: () => openCliOverlay(),
+  },
+  {
+    id: "tool-audio",
+    label: "Alternar Audio Háptico ON/OFF",
+    meta: "Herramienta",
+    badge: "AUDIO",
+    action: () => toggleAudio(),
+  },
+  {
+    id: "tool-matrix",
+    label: "Lanzar Lluvia Digital Matrix",
+    meta: "Easter Egg",
+    badge: "SYS",
+    action: () => startMatrixRain(),
+  },
 
-  { id: "contact-whatsapp", label: "Contactar por WhatsApp (+51 947 648 334)", meta: "Contacto", badge: "CHAT", action: () => window.open("https://wa.me/51947648334", "_blank", "noopener noreferrer") },
-  { id: "contact-email", label: "Enviar Correo (cristiandariva8@gmail.com)", meta: "Contacto", badge: "MAIL", action: () => (window.location.href = "mailto:cristiandariva8@gmail.com") },
-  { id: "contact-github", label: "Ver Perfil en GitHub", meta: "Social", badge: "LINK", action: () => window.open("https://github.com/ChristianDariva17", "_blank", "noopener noreferrer") },
-  { id: "contact-linkedin", label: "Ver Perfil en LinkedIn", meta: "Social", badge: "LINK", action: () => window.open("https://www.linkedin.com/in/christiandarivasoria/", "_blank", "noopener noreferrer") },
+  {
+    id: "contact-whatsapp",
+    label: "Contactar por WhatsApp (+51 947 648 334)",
+    meta: "Contacto",
+    badge: "CHAT",
+    action: () =>
+      window.open("https://wa.me/51947648334", "_blank", "noopener noreferrer"),
+  },
+  {
+    id: "contact-email",
+    label: "Enviar Correo (cristiandariva8@gmail.com)",
+    meta: "Contacto",
+    badge: "MAIL",
+    action: () => (window.location.href = "mailto:cristiandariva8@gmail.com"),
+  },
+  {
+    id: "contact-github",
+    label: "Ver Perfil en GitHub",
+    meta: "Social",
+    badge: "LINK",
+    action: () =>
+      window.open(
+        "https://github.com/ChristianDariva17",
+        "_blank",
+        "noopener noreferrer",
+      ),
+  },
+  {
+    id: "contact-linkedin",
+    label: "Ver Perfil en LinkedIn",
+    meta: "Social",
+    badge: "LINK",
+    action: () =>
+      window.open(
+        "https://www.linkedin.com/in/christiandarivasoria/",
+        "_blank",
+        "noopener noreferrer",
+      ),
+  },
 ];
 
 let selectedPaletteIndex = 0;
 let filteredPaletteCommands = [...PALETTE_COMMANDS];
+let lastFocusedPaletteTrigger = null;
+
+function trapFocus(container, event) {
+  if (event.key !== "Tab") return;
+
+  const focusable = Array.from(
+    container.querySelectorAll(
+      'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+    ),
+  ).filter(
+    (el) =>
+      el.offsetParent !== null || el.offsetWidth > 0 || el.offsetHeight > 0,
+  );
+
+  if (focusable.length === 0) return;
+
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+
+  if (event.shiftKey) {
+    if (document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    }
+  } else {
+    if (document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+}
 
 function openCommandPalette() {
   const palette = document.querySelector("#command-palette");
   const input = document.querySelector("#palette-search");
   if (!palette || !input) return;
 
+  lastFocusedPaletteTrigger = document.activeElement;
   palette.classList.add("is-open");
   input.value = "";
   filterPaletteCommands("");
@@ -540,6 +789,13 @@ function closeCommandPalette() {
   if (!palette) return;
   palette.classList.remove("is-open");
   playHaptic(523, "sine", 0.03);
+  if (
+    lastFocusedPaletteTrigger &&
+    typeof lastFocusedPaletteTrigger.focus === "function"
+  ) {
+    lastFocusedPaletteTrigger.focus();
+    lastFocusedPaletteTrigger = null;
+  }
 }
 
 function filterPaletteCommands(query) {
@@ -641,13 +897,24 @@ function initCommandPalette() {
   });
 
   // Buttons triggers
-  document.querySelector("#open-palette-btn")?.addEventListener("click", openCommandPalette);
-  document.querySelector("#dock-palette-btn")?.addEventListener("click", openCommandPalette);
+  document
+    .querySelector("#open-palette-btn")
+    ?.addEventListener("click", openCommandPalette);
+  document
+    .querySelector("#dock-palette-btn")
+    ?.addEventListener("click", openCommandPalette);
 
   // Backdrop click
   palette.addEventListener("click", (e) => {
     if (e.target === palette) {
       closeCommandPalette();
+    }
+  });
+
+  // Focus trap inside palette dialog
+  palette.addEventListener("keydown", (e) => {
+    if (e.key === "Tab") {
+      trapFocus(palette, e);
     }
   });
 
@@ -684,12 +951,14 @@ initCommandPalette();
    ========================================================================== */
 let cliHistory = [];
 let cliHistoryIndex = -1;
+let lastFocusedCliTrigger = null;
 
 function openCliOverlay() {
   const overlay = document.querySelector("#cli-overlay");
   const input = document.querySelector("#cli-input");
   if (!overlay || !input) return;
 
+  lastFocusedCliTrigger = document.activeElement;
   overlay.classList.add("is-open");
   input.focus();
   playHaptic(987, "sine", 0.05);
@@ -705,6 +974,13 @@ function closeCliOverlay() {
   if (!overlay) return;
   overlay.classList.remove("is-open");
   playHaptic(440, "sine", 0.04);
+  if (
+    lastFocusedCliTrigger &&
+    typeof lastFocusedCliTrigger.focus === "function"
+  ) {
+    lastFocusedCliTrigger.focus();
+    lastFocusedCliTrigger = null;
+  }
 }
 
 function printCliLine(text, className = "cli-line", color = null) {
@@ -723,12 +999,87 @@ function printCliLine(text, className = "cli-line", color = null) {
   }
 }
 
+function printCliUserCommand(cmd) {
+  const output = document.querySelector("#cli-output");
+  const scrollBody = document.querySelector("#cli-scroll-body");
+  if (!output) return;
+
+  const div = document.createElement("div");
+  div.className = "cli-line";
+  div.style.color = "#ffffff";
+
+  const prefix = document.createElement("span");
+  prefix.style.color = "#38bdf8";
+  prefix.textContent = "cd-studio:~ guest$ ";
+
+  const cmdSpan = document.createElement("span");
+  cmdSpan.textContent = cmd;
+
+  div.appendChild(prefix);
+  div.appendChild(cmdSpan);
+  output.appendChild(div);
+
+  if (scrollBody) {
+    scrollBody.scrollTop = scrollBody.scrollHeight;
+  }
+}
+
+function printCliUnknownCommandError(cmd) {
+  const output = document.querySelector("#cli-output");
+  const scrollBody = document.querySelector("#cli-scroll-body");
+  if (!output) return;
+
+  const div = document.createElement("div");
+  div.className = "cli-line";
+  div.style.color = "#ef4444";
+
+  const preText = document.createTextNode("Comando no reconocido: '");
+  const strongCmd = document.createElement("strong");
+  strongCmd.textContent = cmd;
+
+  const midText = document.createTextNode("'. Escribe '");
+  const strongHelp = document.createElement("strong");
+  strongHelp.textContent = "help";
+
+  const postText = document.createTextNode("' para ayuda.");
+
+  div.appendChild(preText);
+  div.appendChild(strongCmd);
+  div.appendChild(midText);
+  div.appendChild(strongHelp);
+  div.appendChild(postText);
+  output.appendChild(div);
+
+  if (scrollBody) {
+    scrollBody.scrollTop = scrollBody.scrollHeight;
+  }
+}
+
 function printCliBanner() {
-  printCliLine("╔══════════════════════════════════════════════════════════════╗", "cli-line", "#38bdf8");
-  printCliLine("║  CD STUDIO CLI · INTERFACE DE CONTROL DE SISTEMAS v2.4.0      ║", "cli-line", "#93c5fd");
-  printCliLine("║  Software Design & Development · Christian Dariva            ║", "cli-line", "#cbd5e1");
-  printCliLine("╚══════════════════════════════════════════════════════════════╝", "cli-line", "#38bdf8");
-  printCliLine("Escribe <strong style='color:#38bdf8'>help</strong> para ver la lista de comandos disponibles, o <strong style='color:#38bdf8'>gui</strong> para volver al portafolio.", "cli-line");
+  printCliLine(
+    "╔══════════════════════════════════════════════════════════════╗",
+    "cli-line",
+    "#38bdf8",
+  );
+  printCliLine(
+    "║  CD STUDIO CLI · INTERFACE DE CONTROL DE SISTEMAS v2.4.0      ║",
+    "cli-line",
+    "#93c5fd",
+  );
+  printCliLine(
+    "║  Software Design & Development · Christian Dariva            ║",
+    "cli-line",
+    "#cbd5e1",
+  );
+  printCliLine(
+    "╚══════════════════════════════════════════════════════════════╝",
+    "cli-line",
+    "#38bdf8",
+  );
+  printCliLine(
+    "Escribe <strong style='color:#38bdf8'>help</strong> para ver la lista de comandos disponibles, o <strong style='color:#38bdf8'>gui</strong> para volver al portafolio.",
+    "cli-line",
+  );
 }
 
 function executeCliCommand(rawCmd) {
@@ -738,7 +1089,7 @@ function executeCliCommand(rawCmd) {
   cliHistory.push(cmd);
   cliHistoryIndex = cliHistory.length;
 
-  printCliLine(`<span style="color:#38bdf8">cd-studio:~ guest$</span> ${cmd}`, "cli-line", "#ffffff");
+  printCliUserCommand(cmd);
   playHaptic(1100, "sine", 0.03);
 
   const parts = cmd.split(" ");
@@ -748,56 +1099,157 @@ function executeCliCommand(rawCmd) {
   switch (mainCmd) {
     case "help":
     case "?":
-      printCliLine("Comandos disponibles en CD STUDIO CLI:", "cli-line", "#38bdf8");
-      printCliLine("  <strong>projects</strong>               Lista los proyectos desarrollados en producción.", "cli-line");
-      printCliLine("  <strong>castillo</strong>               Muestra telemetría y estado de Castillo Yarinacocha.", "cli-line");
-      printCliLine("  <strong>skills</strong> | <strong>stack</strong>         Muestra el stack tecnológico y capacidades.", "cli-line");
-      printCliLine("  <strong>theme &lt;nombre&gt;</strong>         Cambia el tema: precision | emerald | solar | monolith.", "cli-line");
-      printCliLine("  <strong>audio &lt;on|off&gt;</strong>        Activa o desactiva la síntesis háptica de audio.", "cli-line");
-      printCliLine("  <strong>matrix</strong>                 Ejecuta la lluvia digital Matrix en pantalla completa.", "cli-line");
-      printCliLine("  <strong>contact</strong>                Muestra los canales de contacto directo.", "cli-line");
-      printCliLine("  <strong>whoami</strong>                 Muestra la sesión actual del sistema.", "cli-line");
-      printCliLine("  <strong>date</strong>                   Muestra la fecha y hora del sistema.", "cli-line");
-      printCliLine("  <strong>clear</strong>                  Limpia la pantalla de la terminal.", "cli-line");
-      printCliLine("  <strong>gui</strong> | <strong>exit</strong>             Cierra la terminal y vuelve a la vista normal.", "cli-line");
+      printCliLine(
+        "Comandos disponibles en CD STUDIO CLI:",
+        "cli-line",
+        "#38bdf8",
+      );
+      printCliLine(
+        "  <strong>projects</strong>               Lista los proyectos desarrollados en producción.",
+        "cli-line",
+      );
+      printCliLine(
+        "  <strong>castillo</strong>               Muestra telemetría y estado de Castillo Yarinacocha.",
+        "cli-line",
+      );
+      printCliLine(
+        "  <strong>skills</strong> | <strong>stack</strong>         Muestra el stack tecnológico y capacidades.",
+        "cli-line",
+      );
+      printCliLine(
+        "  <strong>theme &lt;nombre&gt;</strong>         Cambia el tema: precision | emerald | solar | monolith.",
+        "cli-line",
+      );
+      printCliLine(
+        "  <strong>audio &lt;on|off&gt;</strong>        Activa o desactiva la síntesis háptica de audio.",
+        "cli-line",
+      );
+      printCliLine(
+        "  <strong>matrix</strong>                 Ejecuta la lluvia digital Matrix en pantalla completa.",
+        "cli-line",
+      );
+      printCliLine(
+        "  <strong>contact</strong>                Muestra los canales de contacto directo.",
+        "cli-line",
+      );
+      printCliLine(
+        "  <strong>whoami</strong>                 Muestra la sesión actual del sistema.",
+        "cli-line",
+      );
+      printCliLine(
+        "  <strong>date</strong>                   Muestra la fecha y hora del sistema.",
+        "cli-line",
+      );
+      printCliLine(
+        "  <strong>clear</strong>                  Limpia la pantalla de la terminal.",
+        "cli-line",
+      );
+      printCliLine(
+        "  <strong>gui</strong> | <strong>exit</strong>             Cierra la terminal y vuelve a la vista normal.",
+        "cli-line",
+      );
       break;
 
     case "projects":
     case "proyectos":
     case "ls":
-      printCliLine("Portafolio Seleccionado:", "cli-line", "#38bdf8");
-      printCliLine("  [01] <strong>Castillo Yarinacocha</strong> — PMS, KDS, Redis TLS, WebSockets (Pucallpa, PE)", "cli-line");
-      printCliLine("  [02] <strong>Flores Amarillas</strong> — Escena interactiva 3D WebGL / Three.js", "cli-line");
-      printCliLine("  [03] <strong>Canales Abiertos</strong> — Streaming multimedia HLS y cine legal en español", "cli-line");
-      printCliLine("  [04] <strong>Landing Pulso</strong> — Landing de producto y microinteracciones", "cli-line");
-      printCliLine("  [05] <strong>Ucayali Decide 2026</strong> — Plataforma cívica con datos abiertos del JNE", "cli-line");
-      printCliLine("  [06] <strong>SistemaDesayunos</strong> — Gestión comercial integral en Laravel / PHP", "cli-line");
+      printCliLine("Sistemas de Software & Ingeniería:", "cli-line", "#38bdf8");
+      printCliLine(
+        "  [01] <strong>Castillo Yarinacocha</strong> — PMS, KDS, Redis TLS, WebSockets (Pucallpa, PE)",
+        "cli-line",
+      );
+      printCliLine(
+        "  [02] <strong>Canales Abiertos</strong> — Streaming multimedia HLS y catálogo legal de cine",
+        "cli-line",
+      );
+      printCliLine(
+        "  [03] <strong>Landing Pulso</strong> — Landing de producto y microinteracciones",
+        "cli-line",
+      );
+      printCliLine(
+        "  [04] <strong>Ucayali Decide 2026</strong> — Plataforma cívica con datos abiertos del JNE",
+        "cli-line",
+      );
+      printCliLine(
+        "  [05] <strong>SistemaDesayunos</strong> — Gestión comercial integral en Laravel / PHP",
+        "cli-line",
+      );
+      printCliLine(
+        "Laboratorio Creativo & Gráficos 3D:",
+        "cli-line",
+        "#facc15",
+      );
+      printCliLine(
+        "  [Lab 01] <strong>Flores Amarillas</strong> — Escena interactiva 3D WebGL / Three.js",
+        "cli-line",
+      );
       break;
 
     case "castillo":
-      printCliLine("Telemetría Castillo Yarinacocha Core:", "cli-line", "#4ade80");
-      printCliLine("  • Estado: ONLINE (Cluster Node.js + Redis TLS + Postgres)", "cli-line");
-      printCliLine("  • Áreas operativas: Front Desk, KDS Cocina, Caja Z 80mm, Torniquetes ZK", "cli-line");
-      printCliLine("  • Latencia de evento: 12ms · Sincronización WebSockets bidireccional", "cli-line");
-      printCliLine("  • Portal: <a href='https://admin.grupodariva.cloud/' target='_blank' style='color:#38bdf8;text-decoration:underline;'>admin.grupodariva.cloud ↗</a>", "cli-line");
+      printCliLine(
+        "Demostración Operativa · Castillo Yarinacocha (Simulación):",
+        "cli-line",
+        "#38bdf8",
+      );
+      printCliLine(
+        "  • Arquitectura: Cluster Node.js + Redis TLS + Postgres (Demostración)",
+        "cli-line",
+        "#4ade80",
+      );
+      printCliLine(
+        "  • Áreas operativas: Front Desk, KDS Cocina, Caja Z 80mm, Torniquetes ZK",
+        "cli-line",
+      );
+      printCliLine(
+        "  • Latencia interactiva: 12ms (Muestra simulada en cliente)",
+        "cli-line",
+      );
+      printCliLine(
+        "  • Portal público: <a href='https://admin.grupodariva.cloud/' target='_blank' rel='noopener noreferrer' style='color:#38bdf8;text-decoration:underline;'>admin.grupodariva.cloud ↗</a>",
+        "cli-line",
+      );
       break;
 
     case "skills":
     case "stack":
-      printCliLine("Stack Tecnológico · Christian Dariva:", "cli-line", "#38bdf8");
-      printCliLine("  • <strong>Backend &amp; Sistemas:</strong> Node.js, TypeScript, PostgreSQL, Redis TLS, Docker, Linux", "cli-line");
-      printCliLine("  • <strong>Frontend &amp; Interacción:</strong> Vanilla Web Nativo, CSS3 Grid/Variables, WebGL, Three.js", "cli-line");
-      printCliLine("  • <strong>Hardware &amp; IoT:</strong> Torniquetes ZKteco, Lectores QR, Impresoras Térmicas 80mm", "cli-line");
-      printCliLine("  • <strong>Metodología:</strong> Arquitectura limpia, telemetría en vivo, cero bloat.", "cli-line");
+      printCliLine(
+        "Stack Tecnológico · Christian Dariva:",
+        "cli-line",
+        "#38bdf8",
+      );
+      printCliLine(
+        "  • <strong>Backend &amp; Sistemas:</strong> Node.js, TypeScript, PostgreSQL, Redis TLS, Docker, Linux",
+        "cli-line",
+      );
+      printCliLine(
+        "  • <strong>Frontend &amp; Interacción:</strong> Vanilla Web Nativo, CSS3 Grid/Variables, WebGL, Three.js",
+        "cli-line",
+      );
+      printCliLine(
+        "  • <strong>Hardware &amp; IoT:</strong> Torniquetes ZKteco, Lectores QR, Impresoras Térmicas 80mm",
+        "cli-line",
+      );
+      printCliLine(
+        "  • <strong>Metodología:</strong> Arquitectura limpia, pruebas automatizadas, cero bloat.",
+        "cli-line",
+      );
       break;
 
     case "theme":
       if (args[0] && VALID_THEMES.includes(args[0].toLowerCase())) {
         const selected = args[0].toLowerCase();
         applyTheme(selected);
-        printCliLine(`Tema cambiado exitosamente a: <strong>${selected}</strong>`, "cli-line", "#4ade80");
+        printCliLine(
+          `Tema cambiado exitosamente a: <strong>${selected}</strong>`,
+          "cli-line",
+          "#4ade80",
+        );
       } else {
-        printCliLine(`Uso: theme &lt;nombre&gt;. Opciones válidas: ${VALID_THEMES.join(" | ")}`, "cli-line", "#facc15");
+        printCliLine(
+          `Uso: theme &lt;nombre&gt;. Opciones válidas: ${VALID_THEMES.join(" | ")}`,
+          "cli-line",
+          "#facc15",
+        );
       }
       break;
 
@@ -821,14 +1273,29 @@ function executeCliCommand(rawCmd) {
     case "contact":
     case "contacto":
       printCliLine("Canales de Contacto Directo:", "cli-line", "#38bdf8");
-      printCliLine("  • WhatsApp: <a href='https://wa.me/51947648334' target='_blank' rel='noopener noreferrer' style='color:#4ade80;'>+51 947 648 334 ↗</a>", "cli-line");
-      printCliLine("  • Email: <a href='mailto:cristiandariva8@gmail.com' style='color:#38bdf8;'>cristiandariva8@gmail.com ↗</a>", "cli-line");
-      printCliLine("  • LinkedIn: <a href='https://www.linkedin.com/in/christiandarivasoria/' target='_blank' rel='noopener noreferrer' style='color:#93c5fd;'>linkedin.com/in/christiandarivasoria/ ↗</a>", "cli-line");
-      printCliLine("  • GitHub: <a href='https://github.com/ChristianDariva17' target='_blank' rel='noopener noreferrer' style='color:#93c5fd;'>github.com/ChristianDariva17 ↗</a>", "cli-line");
+      printCliLine(
+        "  • WhatsApp: <a href='https://wa.me/51947648334' target='_blank' rel='noopener noreferrer' style='color:#4ade80;'>+51 947 648 334 ↗</a>",
+        "cli-line",
+      );
+      printCliLine(
+        "  • Email: <a href='mailto:cristiandariva8@gmail.com' style='color:#38bdf8;'>cristiandariva8@gmail.com ↗</a>",
+        "cli-line",
+      );
+      printCliLine(
+        "  • LinkedIn: <a href='https://www.linkedin.com/in/christiandarivasoria/' target='_blank' rel='noopener noreferrer' style='color:#93c5fd;'>linkedin.com/in/christiandarivasoria/ ↗</a>",
+        "cli-line",
+      );
+      printCliLine(
+        "  • GitHub: <a href='https://github.com/ChristianDariva17' target='_blank' rel='noopener noreferrer' style='color:#93c5fd;'>github.com/ChristianDariva17 ↗</a>",
+        "cli-line",
+      );
       break;
 
     case "whoami":
-      printCliLine("guest@cd-studio (Pucallpa, PE) · Privilegios de observador", "cli-line");
+      printCliLine(
+        "guest@cd-studio (Pucallpa, PE) · Privilegios de observador",
+        "cli-line",
+      );
       break;
 
     case "date":
@@ -847,7 +1314,7 @@ function executeCliCommand(rawCmd) {
       break;
 
     default:
-      printCliLine(`Comando no reconocido: '<strong>${cmd}</strong>'. Escribe '<strong>help</strong>' para ayuda.`, "cli-line", "#ef4444");
+      printCliUnknownCommandError(cmd);
       playHaptic(300, "sawtooth", 0.06);
       break;
   }
@@ -855,19 +1322,54 @@ function executeCliCommand(rawCmd) {
 
 function initCliOverlay() {
   const overlay = document.querySelector("#cli-overlay");
+  const cliWindow = document.querySelector(".cli-window");
   const form = document.querySelector("#cli-form");
   const input = document.querySelector("#cli-input");
   const closeBtn = document.querySelector("#cli-close-btn");
+  const minBtn = document.querySelector("#cli-min-btn");
+  const maxBtn = document.querySelector("#cli-max-btn");
 
   if (!overlay || !form || !input) return;
 
-  document.querySelector("#open-cli-btn")?.addEventListener("click", openCliOverlay);
-  document.querySelector("#dock-cli-btn")?.addEventListener("click", openCliOverlay);
+  document
+    .querySelector("#open-cli-btn")
+    ?.addEventListener("click", openCliOverlay);
+  document
+    .querySelector("#dock-cli-btn")
+    ?.addEventListener("click", openCliOverlay);
 
   closeBtn?.addEventListener("click", closeCliOverlay);
 
+  minBtn?.addEventListener("click", () => {
+    closeCliOverlay();
+    document.querySelector("#dock-cli-btn")?.focus();
+  });
+
+  maxBtn?.addEventListener("click", () => {
+    if (!cliWindow) return;
+    const isMax = cliWindow.classList.toggle("is-maximized");
+    maxBtn.setAttribute(
+      "aria-label",
+      isMax ? "Restaurar tamaño terminal" : "Maximizar terminal",
+    );
+    playHaptic(880, "sine", 0.03);
+  });
+
   overlay.addEventListener("click", (e) => {
     if (e.target === overlay) closeCliOverlay();
+  });
+
+  overlay.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      e.preventDefault();
+      closeCliOverlay();
+    } else if (e.key === "Tab") {
+      if (e.target === input && !e.shiftKey) {
+        // Dejar que autocompletado en input responda
+      } else {
+        trapFocus(overlay, e);
+      }
+    }
   });
 
   form.addEventListener("submit", (e) => {
@@ -878,9 +1380,7 @@ function initCliOverlay() {
   });
 
   input.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      closeCliOverlay();
-    } else if (e.key === "ArrowUp") {
+    if (e.key === "ArrowUp") {
       e.preventDefault();
       if (cliHistory.length > 0 && cliHistoryIndex > 0) {
         cliHistoryIndex--;
@@ -898,7 +1398,19 @@ function initCliOverlay() {
     } else if (e.key === "Tab") {
       e.preventDefault();
       const current = input.value.trim().toLowerCase();
-      const candidates = ["help", "projects", "castillo", "skills", "theme", "audio", "matrix", "contact", "clear", "gui", "exit"];
+      const candidates = [
+        "help",
+        "projects",
+        "castillo",
+        "skills",
+        "theme",
+        "audio",
+        "matrix",
+        "contact",
+        "clear",
+        "gui",
+        "exit",
+      ];
       const match = candidates.find((c) => c.startsWith(current));
       if (match) {
         input.value = match;
@@ -939,7 +1451,9 @@ function startMatrixRain() {
     ctx.font = `${fontSize}px monospace`;
 
     for (let i = 0; i < drops.length; i++) {
-      const text = characters.charAt(Math.floor(Math.random() * characters.length));
+      const text = characters.charAt(
+        Math.floor(Math.random() * characters.length),
+      );
       ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
       if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
@@ -968,7 +1482,18 @@ function startMatrixRain() {
 }
 
 // Konami Code Listener (↑ ↑ ↓ ↓ ← → ← → B A)
-const konamiCode = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
+const konamiCode = [
+  "ArrowUp",
+  "ArrowUp",
+  "ArrowDown",
+  "ArrowDown",
+  "ArrowLeft",
+  "ArrowRight",
+  "ArrowLeft",
+  "ArrowRight",
+  "b",
+  "a",
+];
 let konamiPosition = 0;
 
 document.addEventListener("keydown", (e) => {

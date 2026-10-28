@@ -1,6 +1,8 @@
 {
-  "name": "perfil-estudiantil-portfolio",
-  "version": "0.0.0",
+  "name": "cd-studio-portfolio",
+  "version": "1.0.0",
+  "description": "Portafolio de CD STUDIO — Ingeniería y desarrollo de software",
+  "homepage": "https://christiandariva17.github.io/Perfil_Estudiantil.github.io/",
   "private": true,
   "engines": {
     "node": ">=20.19.0"
@@ -10,11 +12,13 @@
     "quality:content": "node scripts/quality.mjs",
     "quality:html": "html-validate index.html proyectos/castillo-yarinacocha.html proyectos/sistema-desayunos.html proyectos/canales-abiertos.html proyectos/ucayali-decide.html proyectos/pulso.html",
     "quality:format": "prettier --check style.css",
+    "quality:audit": "node scripts/audit-qa.mjs",
     "quality:lighthouse": "lhci autorun"
   },
   "devDependencies": {
     "@lhci/cli": "0.15.1",
     "html-validate": "10.4.0",
+    "playwright": "^1.64.1",
     "prettier": "3.9.9"
   }
 }

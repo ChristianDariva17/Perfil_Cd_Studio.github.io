@@ -4,11 +4,16 @@
       "staticDistDir": ".",
       "url": [
         "/index.html",
+        "/proyectos/castillo-yarinacocha.html",
         "/proyectos/sistema-desayunos.html",
         "/proyectos/canales-abiertos.html",
-        "/proyectos/ucayali-decide.html"
+        "/proyectos/ucayali-decide.html",
+        "/proyectos/pulso.html"
       ],
-      "numberOfRuns": 1
+      "numberOfRuns": 3,
+      "settings": {
+        "chromeFlags": "--headless=new --no-sandbox --disable-gpu"
+      }
     },
     "assert": {
       "assertions": {

@@ -1,0 +1,146 @@
+{
+  "generated_at_utc": "2026-10-28T02:09:27.052Z",
+  "generator": "CD STUDIO Automated Browser Capture Engine v1.0",
+  "engine": "Playwright / Chromium (Microsoft Edge)",
+  "audit_notes": "Capturas reales obtenidas desde las URLs públicas del portafolio. No se utilizaron credenciales privadas ni imágenes sintéticas.",
+  "projects": {
+    "pulso": {
+      "title": "Landing Pulso",
+      "source_url": "https://landing-pulso.vercel.app/",
+      "project_type": "landing-page",
+      "captured_at_utc": "2026-10-28T02:09:27.106Z",
+      "privacy_reviewed": true,
+      "privacy_notes": "Inspección de vista pública verificada; sin datos personales o confidenciales.",
+      "captures": {
+        "desktop": {
+          "file": "assets/projects/pulso/desktop.webp",
+          "width": 1440,
+          "height": 900,
+          "format": "webp",
+          "size_bytes": 69232,
+          "http_status": 200
+        },
+        "mobile": {
+          "file": "assets/projects/pulso/mobile.webp",
+          "width": 390,
+          "height": 844,
+          "format": "webp",
+          "size_bytes": 30378,
+          "http_status": 200
+        }
+      }
+    },
+    "canales-abiertos": {
+      "title": "Canales Abiertos",
+      "source_url": "https://christiandariva17.github.io/canales-abiertos/",
+      "project_type": "multimedia-platform",
+      "captured_at_utc": "2026-10-28T02:09:42.692Z",
+      "privacy_reviewed": true,
+      "privacy_notes": "Inspección de vista pública verificada; sin datos personales o confidenciales.",
+      "captures": {
+        "desktop": {
+          "file": "assets/projects/canales-abiertos/desktop.webp",
+          "width": 1440,
+          "height": 900,
+          "format": "webp",
+          "size_bytes": 47424,
+          "http_status": 200
+        },
+        "mobile": {
+          "file": "assets/projects/canales-abiertos/mobile.webp",
+          "width": 390,
+          "height": 844,
+          "format": "webp",
+          "size_bytes": 28672,
+          "http_status": 200
+        }
+      }
+    },
+    "ucayali-decide": {
+      "title": "Ucayali Decide 2026",
+      "source_url": "https://ucayali-voto-2026.vercel.app/",
+      "project_type": "civic-application",
+      "captured_at_utc": "2026-10-28T02:10:05.019Z",
+      "privacy_reviewed": true,
+      "privacy_notes": "Inspección de vista pública verificada; sin datos personales o confidenciales.",
+      "captures": {
+        "desktop": {
+          "file": "assets/projects/ucayali-decide/desktop.webp",
+          "width": 1440,
+          "height": 900,
+          "format": "webp",
+          "size_bytes": 142898,
+          "http_status": 200
+        },
+        "mobile": {
+          "file": "assets/projects/ucayali-decide/mobile.webp",
+          "width": 390,
+          "height": 844,
+          "format": "webp",
+          "size_bytes": 59304,
+          "http_status": 200
+        }
+      }
+    },
+    "flores-amarillas": {
+      "title": "Flores Amarillas",
+      "source_url": "https://flores-amarillas-omega-virid.vercel.app/",
+      "project_type": "interactive-3d-webgl",
+      "captured_at_utc": "2026-10-28T02:10:18.298Z",
+      "privacy_reviewed": true,
+      "privacy_notes": "Inspección de vista pública verificada; sin datos personales o confidenciales.",
+      "captures": {
+        "desktop": {
+          "file": "assets/projects/flores-amarillas/desktop.webp",
+          "width": 1440,
+          "height": 900,
+          "format": "webp",
+          "size_bytes": 22462,
+          "http_status": 200
+        },
+        "mobile": {
+          "file": "assets/projects/flores-amarillas/mobile.webp",
+          "width": 390,
+          "height": 844,
+          "format": "webp",
+          "size_bytes": 15300,
+          "http_status": 200
+        }
+      }
+    },
+    "castillo-yarinacocha": {
+      "title": "Castillo Yarinacocha — Portal Administrativo",
+      "source_url": "https://admin.grupodariva.cloud/",
+      "project_type": "pms-public-login",
+      "captured_at_utc": "2026-10-28T02:10:54.577Z",
+      "privacy_reviewed": true,
+      "privacy_notes": "Inspección de vista pública verificada; sin datos personales o confidenciales.",
+      "captures": {
+        "desktop": {
+          "file": "assets/projects/castillo-yarinacocha/desktop.webp",
+          "width": 1440,
+          "height": 900,
+          "format": "webp",
+          "size_bytes": 84936,
+          "http_status": 200
+        },
+        "mobile": {
+          "file": "assets/projects/castillo-yarinacocha/mobile.webp",
+          "width": 390,
+          "height": 844,
+          "format": "webp",
+          "size_bytes": 20396,
+          "http_status": 200
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "sistema-desayunos": {
+      "title": "SistemaDesayunos",
+      "repository_url": "https://github.com/ChristianDariva17/SistemaDesayunos",
+      "status": "exception_no_public_web_demo",
+      "notes": "Proyecto académico y sistema comercial Laravel documentado en repositorio público de GitHub sin demo web pública alojada."
+    }
+  }
+}
