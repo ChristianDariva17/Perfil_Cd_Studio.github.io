@@ -1538,6 +1538,55 @@ if ("IntersectionObserver" in window && !isReducedMotion) {
 }
 
 /* ==========================================================================
+   14. Kinetic Text Scramble / Decrypt Engine (Linear / 21st.dev Style)
+   ========================================================================== */
+function runTextScramble(element, duration = 850) {
+  if (!element || isReducedMotion) return;
+  const targetText = element.dataset.scrambleText || element.textContent.trim();
+  element.dataset.scrambleText = targetText;
+  const glyphs = "01_<>{}/*[]~+=XYZ#@!&";
+  const startTime = performance.now();
+
+  function tick(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const resolvedChars = Math.floor(progress * targetText.length);
+
+    let result = "";
+    for (let i = 0; i < targetText.length; i++) {
+      const char = targetText[i];
+      if (char === " " || char === "\n") {
+        result += char;
+      } else if (i < resolvedChars) {
+        result += char;
+      } else {
+        result += glyphs[Math.floor(Math.random() * glyphs.length)];
+      }
+    }
+    element.textContent = result;
+
+    if (progress < 1) {
+      requestAnimationFrame(tick);
+    } else {
+      element.textContent = targetText;
+    }
+  }
+
+  requestAnimationFrame(tick);
+}
+
+const heroSubtitle = document.querySelector("#hero-title span");
+const coreIndexEl = document.querySelector(".core-index");
+
+if (heroSubtitle) {
+  setTimeout(() => runTextScramble(heroSubtitle, 900), 300);
+}
+if (coreIndexEl) {
+  setTimeout(() => runTextScramble(coreIndexEl, 750), 500);
+  coreIndexEl.addEventListener("mouseenter", () => runTextScramble(coreIndexEl, 600));
+}
+
+/* ==========================================================================
    13. Developer Console Signature Banner
    ========================================================================== */
 console.log(
