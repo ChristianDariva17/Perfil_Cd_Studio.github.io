@@ -1455,12 +1455,37 @@ a {
   border-radius: var(--radius-control);
   font-size: 13px;
   font-weight: 500;
-  transition: all 0.2s ease;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 .button-link-secondary:hover {
   background: rgba(29, 78, 216, 0.2);
   border-color: var(--brand-blue);
   color: #ffffff;
+}
+.titan-metrics-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 20px;
+}
+.titan-metric-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  font: 11px var(--mono);
+  color: #bae6fd;
+  letter-spacing: 0.02em;
+}
+.titan-metric-badge strong {
+  color: #38bdf8;
+  font-weight: 700;
 }
 /* Telemetry Dashboard for Castillo */
 .telemetry-dashboard {
@@ -3583,6 +3608,52 @@ a {
   font-size: 13px;
   line-height: 1.5;
 }
+.case-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.case-metric-card {
+  min-height: 160px;
+  padding: 22px 20px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+.case-metric-card:hover {
+  border-color: var(--border-subtle);
+  background: var(--surface-muted);
+}
+.case-metric-num {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: clamp(26px, 3.2vw, 36px);
+  color: var(--acid);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+.case-metric-label {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.35;
+}
+.case-metric-card p {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+.case-gallery-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
 .case-list {
   display: grid;
   gap: 14px;
@@ -3776,7 +3847,8 @@ a {
   .case-section {
     padding-block: 64px;
   }
-  .case-evidence-grid {
+  .case-evidence-grid,
+  .case-metrics-grid {
     grid-template-columns: 1fr;
   }
   .case-evidence-card {

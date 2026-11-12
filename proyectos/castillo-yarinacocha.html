@@ -377,11 +377,173 @@
 
         <section
           class="case-section section-wrap"
+          aria-labelledby="metrics-title"
+        >
+          <div class="case-section-grid">
+            <h2 id="metrics-title">Métricas de impacto real</h2>
+            <div>
+              <div class="case-metrics-grid">
+                <article class="case-metric-card">
+                  <span class="case-metric-num">38</span>
+                  <span class="case-metric-label">Habitaciones &amp; Rack</span>
+                  <p>
+                    5 categorías gestionadas en tiempo real con selector dual de
+                    lista y mapa de piso, tarifas base y ciclo de housekeeping.
+                  </p>
+                </article>
+                <article class="case-metric-card">
+                  <span class="case-metric-num">0</span>
+                  <span class="case-metric-label">Pérdida de comandas</span>
+                  <p>
+                    KDS distribuido en estaciones (Cocina, Bar, Cafetería) con
+                    WebSockets y Redis Pub/Sub, reemplazando el papel.
+                  </p>
+                </article>
+                <article class="case-metric-card">
+                  <span class="case-metric-num">S/ 2,000</span>
+                  <span class="case-metric-label">Tope en gaveta física</span>
+                  <p>
+                    Arqueo ciego obligatorio sin condicionamiento de saldo,
+                    control estricto de remesas y corte Z fiscal en ticket
+                    térmico.
+                  </p>
+                </article>
+                <article class="case-metric-card">
+                  <span class="case-metric-num">107</span>
+                  <span class="case-metric-label">Permisos en 10 Roles</span>
+                  <p>
+                    Matriz RBAC granular para Administradores, Recepción, Caja,
+                    Cocina, Bar, Limpieza, Mantenimiento y Gerencia.
+                  </p>
+                </article>
+                <article class="case-metric-card">
+                  <span class="case-metric-num">&lt; 2 min</span>
+                  <span class="case-metric-label">SLA Confirmación KDS</span>
+                  <p>
+                    Pipeline Kanban de 4 etapas con alertas cromáticas
+                    automáticas para comandas demoradas mayores a 15 minutos.
+                  </p>
+                </article>
+                <article class="case-metric-card">
+                  <span class="case-metric-num">100%</span>
+                  <span class="case-metric-label">Trazabilidad biométrica</span>
+                  <p>
+                    Sincronización de asistencia y turnos con hardware ZKteco a
+                    través de servicio puente local (ZK Bridge).
+                  </p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="case-section section-wrap"
           aria-labelledby="visual-title"
         >
           <div class="case-section-grid">
-            <h2 id="visual-title">Evidencia visual</h2>
-            <div>
+            <h2 id="visual-title">Evidencia visual del sistema</h2>
+            <div class="case-gallery-flow">
+              <figure class="case-screenshot-figure">
+                <img
+                  src="../assets/projects/castillo-yarinacocha/pms-dashboard.webp"
+                  alt="Panel operativo y dashboard de recepción del sistema PMS Hotel Core"
+                  width="1024"
+                  height="503"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption>
+                  <span class="case-screenshot-badge">MÓDULO 01 · RECEPCIÓN</span>
+                  <span
+                    ><strong>Panel Operativo Centralizado</strong> — Resumen del
+                    estado compartido: ocupación general (8%), 35 habitaciones
+                    disponibles, flujo de caja del día, pulso de operación y
+                    capacidad de espacios comunes (piscinas).</span
+                  >
+                </figcaption>
+              </figure>
+
+              <figure class="case-screenshot-figure">
+                <img
+                  src="../assets/projects/castillo-yarinacocha/pms-habitaciones-rack.webp"
+                  alt="Inventario y tarifas de habitaciones con rack interactivo y mapa de piso"
+                  width="1024"
+                  height="502"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption>
+                  <span class="case-screenshot-badge">MÓDULO 02 · RACK &amp; INVENTARIO</span>
+                  <span
+                    ><strong>Inventario &amp; Tarifas de Habitaciones</strong> —
+                    38 habitaciones y 5 categorías con estados en vivo (Ocupada,
+                    Disponible, Limpieza, Mantenimiento), tarifas base por noche
+                    y conmutador entre vista lista y mapa de piso.</span
+                  >
+                </figcaption>
+              </figure>
+
+              <figure class="case-screenshot-figure">
+                <img
+                  src="../assets/projects/castillo-yarinacocha/pms-kds-cocina.webp"
+                  alt="Sistema KDS de cocina y comandas QR en tiempo real"
+                  width="1024"
+                  height="501"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption>
+                  <span class="case-screenshot-badge">MÓDULO 03 · KDS EN TIEMPO REAL</span>
+                  <span
+                    ><strong>KDS Cocina, Bar &amp; Pedidos QR</strong> —
+                    Pipeline Kanban en tiempo real con 4 etapas (Recibido,
+                    Confirmado, En preparación, Listo), SLA de despacho por
+                    estación y detección inmediata de demoras (+15 min).</span
+                  >
+                </figcaption>
+              </figure>
+
+              <figure class="case-screenshot-figure">
+                <img
+                  src="../assets/projects/castillo-yarinacocha/pms-caja-turnos.webp"
+                  alt="Módulo de tesorería, control de caja y políticas de arqueo ciego"
+                  width="1024"
+                  height="500"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption>
+                  <span class="case-screenshot-badge">MÓDULO 04 · TESORERÍA &amp; POS</span>
+                  <span
+                    ><strong>Control de Caja &amp; Turnos</strong> — Auditoría
+                    operativa estricta con política de arqueo ciego obligatorio,
+                    tope de seguridad de S/ 2,000 en gaveta física y cierre
+                    fiscal diario con corte Z térmico de 80mm.</span
+                  >
+                </figcaption>
+              </figure>
+
+              <figure class="case-screenshot-figure">
+                <img
+                  src="../assets/projects/castillo-yarinacocha/pms-reservas-huespedes.webp"
+                  alt="Gestión de reservas de habitación y huéspedes presentes"
+                  width="1024"
+                  height="501"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption>
+                  <span class="case-screenshot-badge">MÓDULO 05 · RESERVAS &amp; FOLIOS</span>
+                  <span
+                    ><strong>Reservas &amp; Estadías de Huéspedes</strong> —
+                    Trazabilidad de ciclo de reserva con identificadores UUID,
+                    estados de pago y confirmación, y registro de clientes
+                    presentes con liquidación de estadías.</span
+                  >
+                </figcaption>
+              </figure>
+
               <figure class="case-screenshot-figure">
                 <picture>
                   <source
@@ -399,9 +561,7 @@
                   />
                 </picture>
                 <figcaption>
-                  <span class="case-screenshot-badge"
-                    >PORTAL EN PRODUCCIÓN</span
-                  >
+                  <span class="case-screenshot-badge">PORTAL EN PRODUCCIÓN</span>
                   <span
                     ><strong>admin.grupodariva.cloud</strong> — Acceso
                     administrativo autenticado para gestión de reservas, KDS de

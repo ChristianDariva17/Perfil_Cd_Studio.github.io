@@ -107,12 +107,16 @@ try {
 
     await page.goto(`http://localhost:${port}${pageInfo.path}`, { waitUntil: "networkidle" });
 
-    // Scroll to trigger any lazy-loaded images
+    // Scroll to trigger any lazy-loaded images and await decoding
     await page.evaluate(async () => {
       window.scrollTo(0, document.body.scrollHeight);
-      await new Promise((r) => setTimeout(r, 400));
+      await Promise.allSettled(
+        Array.from(document.querySelectorAll("img")).map((img) =>
+          img.decode().catch(() => {})
+        )
+      );
       window.scrollTo(0, 0);
-      await new Promise((r) => setTimeout(r, 200));
+      await new Promise((r) => setTimeout(r, 150));
     });
 
     // Check broken images after scrolling

@@ -109,12 +109,12 @@
       }
     },
     "castillo-yarinacocha": {
-      "title": "Castillo Yarinacocha — Portal Administrativo",
+      "title": "Castillo Yarinacocha — Portal Administrativo y Sistema PMS",
       "source_url": "https://admin.grupodariva.cloud/",
-      "project_type": "pms-public-login",
-      "captured_at_utc": "2026-10-28T02:10:54.577Z",
+      "project_type": "pms-enterprise-system",
+      "captured_at_utc": "2026-11-12T12:46:13.000Z",
       "privacy_reviewed": true,
-      "privacy_notes": "Inspección de vista pública verificada; sin datos personales o confidenciales.",
+      "privacy_notes": "Inspección de vista operativa autorizada; datos de prueba autenticados y evidencia de producción.",
       "captures": {
         "desktop": {
           "file": "assets/projects/castillo-yarinacocha/desktop.webp",
@@ -131,6 +131,46 @@
           "format": "webp",
           "size_bytes": 20396,
           "http_status": 200
+        },
+        "pms_dashboard": {
+          "file": "assets/projects/castillo-yarinacocha/pms-dashboard.webp",
+          "width": 1024,
+          "height": 503,
+          "format": "webp",
+          "size_bytes": 55082,
+          "description": "Panel operativo compartido de recepción y ocupación en vivo"
+        },
+        "pms_habitaciones_rack": {
+          "file": "assets/projects/castillo-yarinacocha/pms-habitaciones-rack.webp",
+          "width": 1024,
+          "height": 502,
+          "format": "webp",
+          "size_bytes": 55324,
+          "description": "Rack interactivo de inventario de habitaciones y tarifarios base"
+        },
+        "pms_kds_cocina": {
+          "file": "assets/projects/castillo-yarinacocha/pms-kds-cocina.webp",
+          "width": 1024,
+          "height": 501,
+          "format": "webp",
+          "size_bytes": 53310,
+          "description": "KDS cocina y pedidos QR con pipeline Kanban y SLAs"
+        },
+        "pms_caja_turnos": {
+          "file": "assets/projects/castillo-yarinacocha/pms-caja-turnos.webp",
+          "width": 1024,
+          "height": 500,
+          "format": "webp",
+          "size_bytes": 59016,
+          "description": "Tesorería, arqueo ciego y políticas de turno con corte Z"
+        },
+        "pms_reservas_huespedes": {
+          "file": "assets/projects/castillo-yarinacocha/pms-reservas-huespedes.webp",
+          "width": 1024,
+          "height": 501,
+          "format": "webp",
+          "size_bytes": 53510,
+          "description": "Gestión de reservas de habitación y huéspedes presentes"
         }
       }
     }
